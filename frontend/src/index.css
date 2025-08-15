@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+    --color-imperial-red: #FF0032;
+    --color-onyx: #32373B;
+    --color-tea-green: #C4D6B0;
+    --color-forest-green: #248232;
+
+    --font-dosis: 'Dosis', sans-serif;
+    --font-grotesk: 'Familjen Grotesk', sans-serif;
+}

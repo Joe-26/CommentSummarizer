@@ -8,7 +8,8 @@ import {
 } from "framer-motion";
 import Report from "./Report";
 
-const COLORS = ["#406458", "#514B57", "#3A4648", "#5C4485"];
+// const COLORS = ["#406458", "#514B57", "#3A4648", "#5C4485"];
+const COLORS = ["#8A2BE2", "#00B4D8", "#6A00F4", "#4B0082"];
 
 export default function HeroSection() {
   const [youtubeLink, setYoutubeLink] = useState("");

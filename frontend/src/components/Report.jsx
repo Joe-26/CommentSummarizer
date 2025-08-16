@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import Chart from "chart.js/auto";
+import Chart from "chart.js/auto"; // needed to render chart enven though not explicitly used
 import { Pie } from "react-chartjs-2";
 import { motion, AnimatePresence } from "framer-motion";
-
-// No custom destroy logic needed; use a unique key for Pie chart
 
 export default function Report({ youtubeLink }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [report, setReport] = useState(null);
-  const [openDropdown, setOpenDropdown] = useState(null); // 'positive', 'negative', 'neutral'
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
     if (!youtubeLink) return;
@@ -24,7 +22,10 @@ export default function Report({ youtubeLink }) {
       body: JSON.stringify({ youtube_url: youtubeLink }),
     })
       .then((res) => {
-        if (!res.ok) throw new Error("Check if video hasn't been dropped/takendown. Example Youtube link - https://www.youtube.com/watch?v=abcdef123");
+        if (!res.ok)
+          throw new Error(
+            "Check if video hasn't been dropped/takendown. Example Youtube link - https://www.youtube.com/watch?v=abcdef123"
+          );
         return res.json();
       })
       .then((data) => {
@@ -67,6 +68,8 @@ export default function Report({ youtubeLink }) {
   if (!report) {
     return null;
   }
+
+  const clusterKeys = Object.keys(report.clusters);
 
   // Prepare data for Pie chart with counts in labels
   const positive = report.sentiment_breakdown.positive;
@@ -261,9 +264,18 @@ export default function Report({ youtubeLink }) {
           </div>
         </div>
 
-        <div className="">
+        <div className="flex flex-col gap-3  items-center">
           <div style={{ width: "250px", height: "250px", margin: "0 auto" }}>
             <Pie data={sentimentData} options={sentimentOptions} />
+          </div>
+          <div className="mt-2">
+            <p className="text-lg font-bold"> Top 5 Keywords</p>
+            
+           <ul className="list-disc list-inside font-dosis font-normal">
+              {clusterKeys.map((key) => (
+                <li key={key}>{key}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

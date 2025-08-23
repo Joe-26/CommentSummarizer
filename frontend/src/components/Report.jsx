@@ -141,6 +141,9 @@ export default function Report({ youtubeLink }) {
             <p className="mb-4 font-dosis">{report.executive_summary}</p>
           </div>
           {/* Dropdowns for Top Comments */}
+          <div>
+            <strong className="">Top 5 Comments:</strong>
+          </div>
           <div className="mt-4">
             <button
               className={`flex justify-between w-full text-left py-2 px-3 rounded bg-green-100 hover:bg-green-200 font-semibold mb-1 ${
@@ -150,7 +153,7 @@ export default function Report({ youtubeLink }) {
                 setOpenDropdown(openDropdown === "positive" ? null : "positive")
               }
             >
-              Top Positive Comments
+              🟢 Positive
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -190,7 +193,7 @@ export default function Report({ youtubeLink }) {
                 setOpenDropdown(openDropdown === "negative" ? null : "negative")
               }
             >
-              Top Negative Comments
+              🔴 Negative
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -230,7 +233,7 @@ export default function Report({ youtubeLink }) {
                 setOpenDropdown(openDropdown === "neutral" ? null : "neutral")
               }
             >
-              Few Neutral Comments
+              🟠 Neutral
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

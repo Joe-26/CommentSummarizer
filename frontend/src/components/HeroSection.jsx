@@ -31,7 +31,7 @@ export default function HeroSection() {
   useEffect(() => {
     animate(color, COLORS, {
       ease: "easeInOut",
-      duration: 10,
+      duration: 3,
       repeat: Infinity,
       repeatType: "mirror",
     });
